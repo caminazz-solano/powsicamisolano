@@ -1,0 +1,1267 @@
+﻿:root {
+  --b: #6e1f1b;
+  --bd: #500808;
+  --c: #f5e8c8;
+  --cs: #fff4d4;
+  --p: #e94f9a;
+  --m: #b8dcc8;
+  --y: #f4b83f;
+  --t: #5a201c;
+  --sh: 5px 5px 0 var(--bd);
+  --r: 30px 18px 34px 22px;
+}
+* {
+  box-sizing: border-box;
+}
+@keyframes pawFloat {
+  from { margin-top: -34px; transform: rotate(-8deg); }
+  to { margin-top: 46px; transform: rotate(8deg); }
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: var(--b);
+  color: var(--t);
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.13;
+  mix-blend-mode: multiply;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 700,
+    "opsz" 24;
+  line-height: 1;
+}
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--c);
+  border-bottom: 4px solid var(--bd);
+  box-shadow: 0 5px 0 #50080855;
+}
+.nav {
+  width: min(1180px, calc(100% - 32px));
+  min-height: 76px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  font: 800 clamp(2rem, 4vw, 3rem)/0.9 "Bricolage Grotesque";
+  color: var(--b);
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 55px; /* Controla aquí el alto exacto del logo */
+  width: auto;   /* Mantiene la proporción original de la imagen */
+  object-fit: contain;
+}
+
+.logo span {
+  color: var(--p);
+}
+.links {
+  display: flex;
+  gap: 18px;
+  font: 700 0.86rem "Space Grotesk";
+  text-transform: uppercase;
+}
+.links a {
+  border-bottom: 2px solid transparent;
+  padding: 8px 0;
+}
+.links a:hover {
+  color: var(--p);
+  border-color: var(--p);
+}
+.actions {
+  display: flex;
+  gap: 10px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 19px;
+  border: 3px solid var(--bd);
+  border-radius: 999px;
+  background: var(--c);
+  color: var(--bd);
+  box-shadow: var(--sh);
+  font: 800 0.9rem "Space Grotesk";
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.18s;
+  white-space: nowrap;
+}
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--bd);
+}
+.primary {
+  background: var(--p);
+}
+.yellow {
+  background: var(--y);
+}
+.mint {
+  background: var(--m);
+}
+.icon {
+  width: 48px;
+  padding: 0;
+}
+.menu {
+  display: none;
+}
+.section {
+  position: relative;
+  padding: clamp(58px, 9vw, 108px) max(18px, calc((100vw - 1180px) / 2));
+  overflow: hidden;
+}
+.floating-paw {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--p);
+  font: 700 1.9rem/1 "Material Symbols Outlined";
+  opacity: .25;
+  animation: pawFloat 7.5s ease-in-out infinite alternate;
+}
+.floating-paw:nth-of-type(even) {
+  color: var(--y);
+  animation-duration: 8.5s;
+  animation-direction: alternate-reverse;
+}
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+.section > .floating-paw {
+  position: absolute;
+  z-index: 0;
+}
+.cream {
+  background: var(--c);
+}
+.paper {
+  background: var(--c);
+}
+.mintbg {
+  background: var(--m);
+}
+.wine {
+  background: var(--b);
+  color: var(--c);
+}
+h1,
+h2,
+h3 {
+  font-family: "Bricolage Grotesque";
+  letter-spacing: 0;
+}
+h2.title {
+  margin: 0 0 12px;
+  color: var(--bd);
+  font-size: clamp(2.3rem, 6vw, 5.1rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.wine h2.title {
+  color: var(--c);
+}
+.lead {
+  max-width: 690px;
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 34px;
+}
+.tag,
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: max-content;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 3px solid var(--bd);
+  border-radius: 999px;
+  background: var(--y);
+  color: var(--bd);
+  box-shadow: var(--sh);
+  font: 800 0.78rem "Space Grotesk";
+  text-transform: uppercase;
+}
+.card,
+.identity-card {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid var(--bd);
+  border-radius: var(--r);
+  box-shadow: var(--sh);
+  background: var(--cs);
+  color: var(--t);
+}
+.hero {
+  min-height: auto;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+  background:
+    radial-gradient(circle at 10% 20%, #f4b83f22 0 2px, transparent 2px 34px),
+    var(--b);
+  color: var(--c);
+  padding-top: clamp(34px, 5vw, 58px);
+  padding-bottom: clamp(38px, 5vw, 58px);
+}
+.hero h1 {
+  margin: 26px 0 22px;
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  line-height: 0.84;
+  text-transform: uppercase;
+}
+.hero .hi {
+  display: inline-block;
+  background: var(--c);
+  color: var(--bd);
+  border: 4px solid var(--bd);
+  border-radius: 22px 34px 18px 28px;
+  padding: 5px 15px 10px;
+  box-shadow: var(--sh);
+  transform: rotate(-1deg);
+}
+.hero p {
+  max-width: 570px;
+  color: #fff1ce;
+  font-size: clamp(1rem, 2vw, 1.22rem);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+}
+.collage {
+  position: relative;
+  min-height: 560px;
+}
+.photo {
+  position: absolute;
+  inset: 92px 68px 24px 68px;
+  padding: 10px;
+  background: var(--c);
+  border: 5px solid var(--bd);
+  border-radius: 42px 26px 48px 30px;
+  box-shadow: var(--sh);
+  transform: rotate(2deg);
+  overflow: hidden;
+}
+.photo img {
+  border-radius: 30px 18px 34px 22px;
+}
+.note {
+  position: absolute;
+  border: 4px solid var(--bd);
+  box-shadow: var(--sh);
+  border-radius: var(--r);
+  color: var(--bd);
+  padding: 18px;
+  font-weight: 800;
+}
+.note strong {
+  display: block;
+  font: 800 1.5rem/1 "Bricolage Grotesque";
+  text-transform: uppercase;
+}
+.n1 {
+  right: 0;
+  top: 42px;
+  width: 220px;
+  background: var(--y);
+  transform: rotate(5deg);
+}
+.n2 {
+  left: 0;
+  bottom: 58px;
+  width: 230px;
+  background: var(--m);
+  transform: rotate(-5deg);
+}
+.n3 {
+  right: 22px;
+  bottom: 10px;
+  width: 255px;
+  background: var(--p);
+  transform: rotate(-2deg);
+}
+.paw {
+  position: absolute;
+  font-size: 54px;
+  color: var(--p);
+  left: 22px;
+  top: 72px;
+  transform: rotate(-14deg);
+}
+.grid {
+  display: grid;
+  gap: 24px;
+}
+.services {
+  grid-template-columns: repeat(3, 1fr);
+}
+.svc {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+.svc:nth-child(2n) {
+  background: var(--m);
+  transform: rotate(1deg);
+}
+.svc:nth-child(3n) {
+  background: #ffd5e8;
+  transform: rotate(-1deg);
+}
+.svc:nth-child(4n) {
+  background: #f8c85b;
+}
+.svcimg {
+  height: 172px;
+  border-bottom: 4px solid var(--bd);
+  background: var(--c);
+}
+.svcimg img {
+  object-fit: cover;
+}
+.body {
+  padding: 22px;
+}
+.card h3 {
+  margin: 0 0 8px;
+  color: var(--bd);
+  font-size: 1.75rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.card p {
+  margin: 0;
+}
+.svc .tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--y);
+  box-shadow: 3px 3px 0 var(--bd);
+}
+.split {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 32px;
+}
+.panel {
+  padding: clamp(24px, 4vw, 38px);
+  background: var(--c);
+}
+.panel h2.title {
+  max-width: 100%;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  white-space: nowrap;
+}
+.list {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+}
+.info {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+}
+.ico {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--bd);
+  border-radius: 14px;
+  background: var(--p);
+  color: var(--bd);
+}
+.info h3 {
+  margin: 0 0 3px;
+  font: 800 0.94rem "Space Grotesk";
+  text-transform: uppercase;
+}
+.info p {
+  margin: 0;
+}
+.mapcard {
+  min-height: 440px;
+  background: var(--m);
+  padding: 18px;
+  transform: rotate(1deg);
+}
+.map {
+  height: 100%;
+  min-height: 390px;
+  border: 4px solid var(--bd);
+  border-radius: 22px;
+  background:
+    linear-gradient(90deg, #6e1f1b2e 4px, transparent 4px) 0 0/78px 78px,
+    linear-gradient(#6e1f1b2e 4px, transparent 4px) 0 0/78px 78px,
+    var(--cs);
+  position: relative;
+  overflow: hidden;
+}
+.map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  border: 0;
+}
+.map:before,
+.map:after {
+  display: none;
+  position: absolute;
+  background: var(--p);
+  border: 4px solid var(--bd);
+  box-shadow: var(--sh);
+}
+.map:before {
+  width: 210px;
+  height: 74px;
+  left: 18%;
+  top: 26%;
+  border-radius: 999px;
+  transform: rotate(-20deg);
+}
+.map:after {
+  width: 92px;
+  height: 92px;
+  right: 22%;
+  bottom: 26%;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--y);
+}
+.pin {
+  display: none;
+}
+.maptxt {
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+  background: var(--b);
+  color: var(--c);
+  border: 3px solid var(--bd);
+  border-radius: 18px;
+  padding: 16px;
+  font: 800 1rem "Space Grotesk";
+}
+.contact {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  border: 5px solid var(--bd);
+  border-radius: 34px 22px 42px 26px;
+  background: var(--c);
+  color: var(--bd);
+  box-shadow: 8px 8px 0 var(--y);
+  padding: clamp(24px, 5vw, 52px);
+}
+.contact h2 {
+  margin: 12px 0 8px;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+.promos {
+  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  overflow-x: auto;
+  padding: 8px 8px 18px;
+  scroll-snap-type: x mandatory;
+}
+.promo {
+  min-width: 260px;
+  scroll-snap-align: start;
+  background: var(--c);
+  transform: rotate(-1deg);
+}
+.promo:nth-child(2n) {
+  transform: rotate(1.5deg);
+  background: var(--m);
+}
+.pimg {
+  height: 230px;
+  border-bottom: 4px solid var(--bd);
+  overflow: hidden;
+}
+.badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--p);
+  font: 800 2rem/1 "Bricolage Grotesque";
+  color: var(--bd);
+  padding: 9px 12px;
+  border: 3px solid var(--bd);
+  border-radius: 18px;
+  box-shadow: 3px 3px 0 var(--bd);
+  transform: rotate(-6deg);
+}
+.dash {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.pet {
+  background: var(--m);
+  padding: 20px;
+  height: max-content;
+}
+.petpic {
+  height: 280px;
+  border: 4px solid var(--bd);
+  border-radius: 26px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+.dcard {
+  padding: 22px;
+  min-height: 230px;
+  min-width: 0;
+  height: max-content;
+  background: var(--cs);
+}
+.alert {
+  background: #ffd7e9;
+}
+.rec {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 2px dashed #5a201c55;
+}
+.rec:last-child {
+  border-bottom: 0;
+}
+.rec small {
+  display: block;
+  font: 800 0.78rem "Space Grotesk";
+  color: var(--bd);
+}
+.status {
+  background: var(--y);
+  border: 2px solid var(--bd);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.hot {
+  background: var(--p);
+}
+.appt {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+}
+.steps {
+  padding: 24px;
+  background: var(--m);
+}
+.step {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+  font: 800 0.9rem "Space Grotesk";
+  text-transform: uppercase;
+}
+.step b {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--bd);
+  background: var(--c);
+}
+.step.on b {
+  background: var(--p);
+}
+.form {
+  padding: 24px;
+  background: var(--cs);
+}
+.fg {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+label {
+  display: grid;
+  gap: 7px;
+  font: 800 0.83rem "Space Grotesk";
+  color: var(--bd);
+  text-transform: uppercase;
+}
+input,
+select {
+  min-height: 50px;
+  border: 3px solid var(--bd);
+  border-radius: 16px;
+  background: var(--c);
+  padding: 10px 12px;
+  color: var(--t);
+  outline: none;
+}
+input:focus,
+select:focus {
+  box-shadow: 0 0 0 4px #f4b83f73;
+}
+.times {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+.time {
+  background: var(--c);
+  border: 3px solid var(--bd);
+  border-radius: 16px;
+  padding: 11px 8px;
+  text-align: center;
+  font: 800 0.9rem "Space Grotesk";
+  cursor: pointer;
+}
+.sel {
+  background: var(--y);
+  box-shadow: 3px 3px 0 var(--bd);
+}
+.done {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background: var(--p);
+  color: var(--bd);
+  border: 4px solid var(--bd);
+  border-radius: 24px;
+  box-shadow: var(--sh);
+}
+.done.show {
+  display: block;
+}
+.done h3 {
+  margin: 0 0 10px;
+  font-size: 2.1rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.about {
+  grid-template-columns: repeat(3, 1fr);
+}
+.aphoto {
+  height: 280px;
+}
+.aphoto:nth-child(1) {
+  transform: rotate(-2deg);
+}
+.aphoto:nth-child(2) {
+  transform: rotate(1deg);
+  margin-top: 36px;
+}
+.aphoto:nth-child(3) {
+  transform: rotate(-1deg);
+}
+.identity-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 20px;
+  margin-top: 42px;
+}
+.identity-card {
+  min-width: 0;
+  padding: 26px;
+  border: 4px solid var(--bd);
+  border-radius: var(--r);
+  box-shadow: var(--sh);
+  color: var(--bd);
+}
+.mission-card {
+  background: var(--p);
+  transform: rotate(-1deg);
+}
+.vision-card {
+  background: var(--y);
+  transform: rotate(1deg);
+}
+.values-card {
+  background: var(--c);
+}
+.identity-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 18px;
+  border: 3px solid var(--bd);
+  border-radius: 50%;
+  background: var(--c);
+  font-size: 1.5rem;
+}
+.identity-label {
+  margin: 0 0 8px;
+  font: 800 .78rem "Space Grotesk";
+  text-transform: uppercase;
+}
+.identity-card h3 {
+  margin: 0 0 12px;
+  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.identity-card > p:last-child {
+  margin: 0;
+}
+.values-list {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+}
+.values-list li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.values-list .material-symbols-outlined {
+  font-size: 1.6rem;
+}
+.values-list b,
+.values-list small {
+  display: block;
+}
+.values-list b {
+  font: 800 .9rem "Space Grotesk";
+  text-transform: uppercase;
+}
+.values-list small {
+  margin-top: 2px;
+}
+footer {
+  background: var(--bd);
+  color: var(--c);
+  border-top: 8px solid var(--y);
+}
+.foot {
+  width: min(1180px, calc(100% - 36px));
+  margin: auto;
+  padding: 46px 0;
+  display: grid;
+  grid-template-columns: 1.2fr repeat(3, 1fr);
+  gap: 26px;
+}
+footer h4 {
+  margin: 0 0 12px;
+  font-family: "Bricolage Grotesque";
+  text-transform: uppercase;
+}
+footer p,
+footer a {
+  display: block;
+  margin: 0 0 8px;
+  color: #f9dfb5;
+}
+.social {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.social a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--c);
+  border-radius: 50%;
+  background: var(--p);
+  color: var(--bd);
+}
+.float {
+  position: fixed;
+  z-index: 70;
+  right: 18px;
+  bottom: 18px;
+  width: 62px;
+  height: 62px;
+  padding: 0;
+  background: var(--m);
+}
+@media (max-width: 980px) {
+  .links {
+    display: none;
+  }
+  .menu {
+    display: inline-flex;
+  }
+  .hero,
+  .split,
+  .dash,
+  .appt {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    min-height: auto;
+  }
+  .collage {
+    min-height: 580px;
+    max-width: 620px;
+    width: 100%;
+    margin: auto;
+  }
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dgrid {
+    grid-template-columns: 1fr;
+  }
+  .foot {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact {
+    grid-template-columns: 1fr;
+  }
+  .identity-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .values-card {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 650px) {
+  .nav {
+    width: calc(100% - 24px);
+    min-height: 68px;
+  }
+  .logo {
+    font-size: 2rem;
+  }
+  .actions .primary {
+    display: none;
+  }
+  .section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 17vw, 4.8rem);
+  }
+  .collage {
+    min-height: 570px;
+  }
+  .photo {
+    inset: 92px 58px 42px 58px;
+  }
+  .n1 {
+    right: 6px;
+    top: 34px;
+    width: 184px;
+  }
+  .n2 {
+    left: 4px;
+    bottom: 52px;
+    width: 190px;
+  }
+  .n3 {
+    right: 0;
+    bottom: 2px;
+    width: 210px;
+  }
+  .note strong {
+    font-size: 1.25rem;
+  }
+  .head {
+    display: block;
+  }
+  .services,
+  .fg,
+  .about,
+  .identity-grid {
+    grid-template-columns: 1fr;
+  }
+  .values-card {
+    grid-column: auto;
+  }
+  .aphoto,
+  .aphoto:nth-child(2) {
+    margin-top: 0;
+    height: 230px;
+  }
+  .times {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rec {
+    grid-template-columns: 30px 1fr;
+  }
+  .rec .status {
+    grid-column: 2;
+    width: max-content;
+  }
+  .foot {
+    grid-template-columns: 1fr;
+  }
+  .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  .icon,
+  .float {
+    width: 56px;
+  }
+}
+
+/* Fix de desbordes: los ligatures de Material Symbols no deben ocupar espacio si la fuente tarda o falla. */
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-transform: none;
+  letter-spacing: 0;
+  max-width: 1em;
+}
+.btn .material-symbols-outlined,
+.sticker .material-symbols-outlined {
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+.rec > .material-symbols-outlined {
+  width: 34px;
+  height: 34px;
+  max-width: 34px;
+  font-size: 24px;
+  color: var(--bd);
+}
+.info .material-symbols-outlined,
+.ico {
+  width: 44px;
+  height: 44px;
+  max-width: 44px;
+  font-size: 24px;
+}
+.pin {
+  width: 56px;
+  height: 56px;
+  max-width: 56px;
+}
+.paw {
+  width: 54px;
+  height: 54px;
+  max-width: 54px;
+}
+.dcard {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+.rec > div {
+  min-width: 0;
+}
+.rec b,
+.rec small {
+  overflow-wrap: anywhere;
+}
+.status {
+  justify-self: end;
+}
+.page-main {
+  min-height: 65vh;
+}
+.standalone-note {
+  margin: 0 0 24px;
+  color: var(--bd);
+  font: 800 0.82rem "Space Grotesk";
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  .rec {
+    align-items: start;
+  }
+  .status {
+    justify-self: start;
+  }
+  .dcard {
+    padding: 18px;
+  }
+  .card h3 {
+    font-size: 1.55rem;
+  }
+  .rec b,
+  .rec small {
+    font-size: 0.86rem;
+  }
+  .float {
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* =========================================================
+   MEJORAS: PERFIL PERSONALIZABLE + IMÁGENES DE PINTEREST
+   ========================================================= */
+
+.pinterest-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pinterest-image img {
+  transition: transform .2s ease;
+}
+
+.pinterest-image:hover img {
+  transform: scale(1.03);
+}
+
+.edit-pet {
+  margin-top: 18px;
+  width: 100%;
+}
+
+.pet-switcher {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--bd);
+  font: 800 .72rem "Space Grotesk";
+  text-transform: uppercase;
+}
+
+.pet-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pet-tab {
+  border: 2px solid var(--bd);
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: var(--c);
+  color: var(--bd);
+  font: 800 .72rem "Space Grotesk";
+  cursor: pointer;
+}
+
+.pet-tab.active {
+  background: var(--p);
+}
+
+.add-pet {
+  width: auto;
+  min-height: 38px;
+  padding: 8px 11px;
+  font-size: .72rem;
+  box-shadow: 3px 3px 0 var(--bd);
+}
+
+.remove-pet {
+  width: auto;
+  min-height: 38px;
+  padding: 8px 11px;
+  background: transparent;
+  font-size: .72rem;
+  box-shadow: 3px 3px 0 var(--bd);
+}
+
+.photo-upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.upload-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 3px dashed var(--bd);
+  border-radius: 16px;
+  background: var(--c);
+  cursor: pointer;
+}
+
+.pet-notes {
+  background: #fbefd1;
+}
+
+.note-intro {
+  margin-bottom: 16px !important;
+}
+
+.pet-profile-form {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.pet-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pet-profile-form label,
+.pet-profile-form input,
+.pet-profile-form textarea,
+.pet-profile-form .btn {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pet-profile-form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 110px;
+  border: 3px solid var(--bd);
+  border-radius: 16px;
+  background: var(--c);
+  padding: 12px;
+  color: var(--t);
+  font: 400 1rem/1.5 "Be Vietnam Pro", system-ui, sans-serif;
+  outline: none;
+}
+
+.pet-profile-form textarea:focus {
+  box-shadow: 0 0 0 4px #f4b83f73;
+}
+
+.save-msg {
+  min-height: 20px;
+  font: 800 .78rem "Space Grotesk";
+  color: var(--bd);
+  text-transform: uppercase;
+}
+
+.form-helper {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 2px 0 -8px;
+  color: var(--bd);
+  font: 800 .78rem "Space Grotesk";
+  text-transform: uppercase;
+}
+
+.form-helper .material-symbols-outlined {
+  font-size: 20px;
+}
+
+@media (max-width: 650px) {
+  .pet-switcher {
+    display: grid;
+  }
+
+  .add-pet {
+    width: auto;
+  }
+
+  .remove-pet {
+    width: auto;
+  }
+
+  .pet-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-pet {
+    width: 100%;
+  }
+}

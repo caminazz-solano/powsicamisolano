@@ -1,0 +1,149 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>POWSI | Agendar cita</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="section-page">
+    <header class="top">
+      <nav class="nav">
+        <a class="logo" href="index.html"><img src="powsi.png" alt="powsi"></a>
+        <div class="links">
+          <a href="index.html">Inicio</a><a href="index.html#servicios">Servicios</a
+          ><a href="mi-mascota.html">Mi mascota</a
+          ><a href="index.html#promociones">Promociones</a
+          ><a href="nosotros.html">Nosotros</a
+          ><a href="contacto.html">Contacto</a>
+        </div>
+        <div class="actions">
+          <a
+            class="btn icon"
+            href="https://wa.me/59171764894"
+            aria-label="WhatsApp"
+            ><span class="material-symbols-outlined">forum</span></a
+          ><a class="btn primary" href="agendar.html">Agendar cita</a
+          ><button class="btn icon menu" aria-label="Menu">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="page-main">
+      <section id="agendar" class="section cream">
+        <div class="head">
+          <div>
+            <h2 class="title">Agendar cita</h2>
+            <p class="lead">
+              Un flujo corto: mascota, servicio, fecha, horario y confirmacion
+              lista para WhatsApp.
+            </p>
+          </div>
+        </div>
+        <div class="appt">
+          <aside class="card steps">
+            <div class="step on"><b>1</b>Seleccionar mascota</div>
+            <div class="step on"><b>2</b>Seleccionar servicio</div>
+            <div class="step on"><b>3</b>Elegir fecha</div>
+            <div class="step on"><b>4</b>Horario disponible</div>
+            <div class="step"><b>5</b>Confirmar cita</div>
+          </aside>
+          <form class="card form" id="form">
+            <div class="fg">
+              <label>
+                Nombre de la mascota
+                <select id="pet" required></select>
+              </label><label
+                >Servicio<select id="service">
+                  <option>Consulta veterinaria</option>
+                  <option>Vacunacion</option>
+                  <option>Bano y peluqueria</option>
+                  <option>Esterilizacion</option>
+                  <option>Tratamientos</option>
+                </select></label
+              ><label
+                >Fecha<input id="date" type="date" value="2026-08-28" /></label
+              ><label
+                >Contacto<input id="phone" type="tel" value="+591 71764894"
+              /></label>
+            </div>
+            <p class="form-helper"><span class="material-symbols-outlined">pets</span> Selecciona una de tus mascotas.</p>
+            <div class="times">
+              <button class="time" type="button">09:00</button
+              ><button class="time sel" type="button">10:30</button
+              ><button class="time" type="button">12:00</button
+              ><button class="time" type="button">16:30</button>
+            </div>
+            <button class="btn primary" type="submit">Confirmar cita</button>
+            <div class="done" id="done">
+              <h3>Cita agendada!</h3>
+              <p>
+                <b>Mascota:</b> <span id="cPet">Max</span> - <b>Servicio:</b>
+                <span id="cService">Consulta veterinaria</span>
+              </p>
+              <p>
+                <b>Fecha:</b> <span id="cDate">2026-08-28</span> - <b>Hora:</b>
+                <span id="cTime">10:30</span>
+              </p>
+              <br /><a class="btn yellow" id="whatsappAppointment" href="https://wa.me/59171764894"
+                >Confirmar por WhatsApp</a
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="foot">
+        <div>
+          <div class="logo"><img src="powsii.png" alt=""></div>
+          <p>Veterinaria editorial, calida y muy facil de contactar.</p>
+          <div class="social">
+            <a href="#" aria-label="Instagram"
+              ><span class="material-symbols-outlined">photo_camera</span></a
+            ><a href="#" aria-label="Facebook"
+              ><span class="material-symbols-outlined">thumb_up</span></a
+            ><a href="https://wa.me/59171764894" aria-label="WhatsApp"
+              ><span class="material-symbols-outlined">forum</span></a
+            >
+          </div>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <p>WhatsApp: +591 71764894</p>
+          <p>Av. de las Patitas 123</p>
+        </div>
+        <div>
+          <h4>Horarios</h4>
+          <p>Lun-Vie 9:00 - 19:00</p>
+          <p>Sab 9:00 - 14:00</p>
+        </div>
+        <div>
+          <h4>Enlaces</h4>
+          <a href="index.html#servicios">Servicios</a
+          ><a href="mi-mascota.html">Mi mascota</a
+          ><a href="index.html#promociones">Promociones</a
+          ><a href="agendar.html">Agendar cita</a>
+        </div>
+      </div>
+    </footer>
+    <a
+      class="btn float"
+      href="https://wa.me/59171764894"
+      aria-label="WhatsApp flotante"
+      ><span class="material-symbols-outlined">forum</span></a
+    >
+    <script src="main.js"></script>
+  </body>
+</html>
