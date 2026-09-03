@@ -1,7 +1,26 @@
-﻿const times = document.querySelectorAll(".time");
+const times = document.querySelectorAll(".time");
 const form = document.getElementById("form");
 const done = document.getElementById("done");
 let selected = "10:30";
+
+document.querySelectorAll(".menu").forEach((menu) => {
+  const nav = menu.closest(".nav");
+  const links = nav?.querySelector(".links");
+  if (!links) return;
+
+  menu.setAttribute("aria-expanded", "false");
+  menu.addEventListener("click", () => {
+    const isOpen = links.classList.toggle("open");
+    menu.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  links.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      links.classList.remove("open");
+      menu.setAttribute("aria-expanded", "false");
+    });
+  });
+});
 
 // -----------------------------
 // HORARIOS
@@ -27,7 +46,7 @@ const defaultPetImage = document.getElementById("petImage")?.getAttribute("src")
 const requestedService = new URLSearchParams(window.location.search).get("servicio");
 
 const defaultPet = {
-  name: "Max",
+  name: "",
   age: "3",
   type: "Perro",
   breed: "Golden Retriever",
@@ -61,14 +80,25 @@ function showPetProfile() {
 
   const nameView = document.getElementById("petNameView");
   const ageView = document.getElementById("petAgeView");
+  const weightView = document.getElementById("petWeightView");
   const typeView = document.getElementById("petTypeView");
   const breedView = document.getElementById("petBreedView");
   const image = document.getElementById("petImage");
 
-  if (nameView) nameView.textContent = pet.name || "Sin nombre";
+  if (nameView) nameView.textContent = pet.name || "Indique nombre de mascota";
   if (ageView) ageView.textContent = pet.age ? `${pet.age} ${Number(pet.age) === 1 ? "año" : "años"}` : "Edad no indicada";
+  if (weightView) weightView.textContent = pet.weight ? `${pet.weight} kg` : "Peso no indicado";
   if (typeView) typeView.textContent = pet.type || "Tipo no indicado";
   if (breedView) breedView.textContent = pet.breed || "Raza no indicada";
+  const nextAppointmentView = document.getElementById("nextAppointmentView");
+  if (nextAppointmentView) {
+    try {
+      const appointment = JSON.parse(localStorage.getItem("woofyNextAppointment"));
+      if (appointment && appointment.pet === (pet.name || `Mascota ${activePetIndex + 1}`)) {
+        nextAppointmentView.textContent = `${appointment.service} - ${appointment.date} a las ${appointment.time}`;
+      }
+    } catch {}
+  }
   if (image) {
     image.alt = `Foto de ${pet.name || "mascota"}`;
     image.src = pet.image || defaultPetImage;
@@ -92,9 +122,13 @@ function showPetProfile() {
     if (petInput.tagName === "SELECT") {
       petInput.innerHTML = pets.map((item, index) =>
         `<option value="${index}">${item.name || `Mascota ${index + 1}`}</option>`,
-      ).join("");
-      petInput.value = String(activePetIndex);
+      ).join("") + `<option value="new">Paciente nuevo</option>`;
+      const newPatient = new URLSearchParams(window.location.search).get("paciente") === "nuevo";
+      petInput.value = newPatient ? "new" : String(activePetIndex);
+      syncNewPatientField();
       petInput.addEventListener("change", () => {
+        syncNewPatientField();
+        if (petInput.value === "new") return;
         activePetIndex = Number(petInput.value);
         localStorage.setItem("woofyActivePet", activePetIndex);
         showPetProfile();
@@ -107,6 +141,7 @@ function showPetProfile() {
   if (profileForm) {
     document.getElementById("profileName").value = pet.name || "";
     document.getElementById("profileAge").value = pet.age || "";
+    document.getElementById("profileWeight").value = pet.weight || "";
     document.getElementById("profileType").value = pet.type || "";
     document.getElementById("profileBreed").value = pet.breed || "";
     document.getElementById("profileNotes").value = pet.notes || "";
@@ -122,10 +157,13 @@ function updateWhatsappLink() {
   const serviceInput = document.getElementById("service");
   const dateInput = document.getElementById("date");
   const phoneInput = document.getElementById("phone");
+  const notesInput = document.getElementById("appointmentNotes");
   if (!whatsappAppointment || !petInput || !serviceInput || !dateInput || !phoneInput) return;
 
   const selectedPet = petInput.tagName === "SELECT"
-    ? pets[Number(petInput.value)]?.name || `Mascota ${Number(petInput.value) + 1}`
+    ? petInput.value === "new"
+      ? document.getElementById("newPetName")?.value.trim() || "Paciente nuevo"
+      : pets[Number(petInput.value)]?.name || `Mascota ${Number(petInput.value) + 1}`
     : petInput.value.trim();
   const message = [
     "Hola POWSI, quiero confirmar una cita.",
@@ -134,8 +172,21 @@ function updateWhatsappLink() {
     `Fecha: ${dateInput.value}`,
     `Hora: ${selected}`,
     `Contacto: ${phoneInput.value}`,
+    ...(notesInput?.value.trim() ? [`Notas: ${notesInput.value.trim()}`] : []),
   ].join("\n");
   whatsappAppointment.href = `https://wa.me/59171764894?text=${encodeURIComponent(message)}`;
+}
+
+function syncNewPatientField() {
+  const petInput = document.getElementById("pet");
+  const newPatientField = document.getElementById("newPatientField");
+  const newPetName = document.getElementById("newPetName");
+  if (!petInput || !newPatientField || !newPetName) return;
+
+  const isNewPatient = petInput.value === "new";
+  newPatientField.hidden = !isNewPatient;
+  newPetName.required = isNewPatient;
+  if (isNewPatient) newPetName.focus();
 }
 
 const serviceInput = document.getElementById("service");
@@ -152,6 +203,7 @@ if (profileForm) {
       ...pets[activePetIndex],
       name: document.getElementById("profileName").value.trim(),
       age: document.getElementById("profileAge").value.trim(),
+      weight: document.getElementById("profileWeight").value.trim(),
       type: document.getElementById("profileType").value.trim(),
       breed: document.getElementById("profileBreed").value.trim(),
       notes: document.getElementById("profileNotes").value.trim(),
@@ -226,7 +278,9 @@ if (form && done) {
 
     const petInput = document.getElementById("pet");
     const pet = petInput.tagName === "SELECT"
-      ? pets[Number(petInput.value)]?.name || `Mascota ${Number(petInput.value) + 1}`
+      ? petInput.value === "new"
+        ? document.getElementById("newPetName").value.trim()
+        : pets[Number(petInput.value)]?.name || `Mascota ${Number(petInput.value) + 1}`
       : petInput.value.trim();
 
     if (!pet) {
@@ -240,6 +294,15 @@ if (form && done) {
     document.getElementById("cDate").textContent =
       document.getElementById("date").value;
     document.getElementById("cTime").textContent = selected;
+    const notes = document.getElementById("appointmentNotes").value.trim();
+    document.getElementById("cNotes").textContent = notes;
+    document.getElementById("confirmationNotes").hidden = !notes;
+    localStorage.setItem("woofyNextAppointment", JSON.stringify({
+      pet,
+      service: document.getElementById("service").value,
+      date: document.getElementById("date").value,
+      time: selected,
+    }));
     updateWhatsappLink();
 
     done.classList.add("show");
