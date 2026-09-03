@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --b: #6e1f1b;
   --bd: #500808;
   --c: #f5e8c8;
@@ -857,8 +857,32 @@ footer a {
   background: var(--m);
 }
 @media (max-width: 980px) {
+  .nav {
+    position: relative;
+  }
   .links {
     display: none;
+  }
+  .links.open {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 5;
+    display: grid;
+    gap: 0;
+    padding: 10px 16px 14px;
+    border: 3px solid var(--bd);
+    border-top: 0;
+    background: var(--c);
+    box-shadow: var(--sh);
+  }
+  .links.open a {
+    padding: 12px 4px;
+    border-bottom: 2px solid #6e1f1b33;
+  }
+  .links.open a:last-child {
+    border-bottom: 0;
   }
   .menu {
     display: inline-flex;
@@ -890,6 +914,9 @@ footer a {
   .contact {
     grid-template-columns: 1fr;
   }
+  .about {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .identity-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -914,6 +941,9 @@ footer a {
   }
   .hero h1 {
     font-size: clamp(3rem, 17vw, 4.8rem);
+  }
+  .section {
+    overflow: hidden;
   }
   .collage {
     min-height: 570px;
@@ -1102,6 +1132,13 @@ footer a {
   width: 100%;
 }
 
+.new-patient-link {
+  width: 100%;
+  margin: 2px 0 16px;
+  background: var(--c);
+  font-size: .78rem;
+}
+
 .pet-switcher {
   display: grid;
   gap: 10px;
@@ -1244,7 +1281,28 @@ footer a {
   font-size: 20px;
 }
 
+.form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 92px;
+  border: 3px solid var(--bd);
+  border-radius: 16px;
+  background: var(--c);
+  padding: 12px;
+  color: var(--t);
+  font: 400 1rem/1.5 "Be Vietnam Pro", system-ui, sans-serif;
+  outline: none;
+}
+
+.form textarea:focus {
+  box-shadow: 0 0 0 4px #f4b83f73;
+}
+
 @media (max-width: 650px) {
+  .panel h2.title {
+    white-space: normal;
+  }
+
   .pet-switcher {
     display: grid;
   }
