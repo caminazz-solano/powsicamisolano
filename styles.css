@@ -933,7 +933,10 @@ footer a {
     font-size: 2rem;
   }
   .actions .primary {
-    display: none;
+    display: inline-flex;
+    min-height: 42px;
+    padding: 9px 12px;
+    font-size: .72rem;
   }
   .section {
     padding-left: 16px;
