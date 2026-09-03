@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -61,7 +61,7 @@
               <a class="pinterest-image" id="petImageLink"
                  href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer"
                  title="Abrir imagen en Pinterest">
-                <img id="petImage" alt="Foto de Max"
+                <img id="petImage" alt="Foto de mascota"
                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6np5ClXnP6Ci9JDaIbsmDKpGyFzprQX0_Y3U_7i6cxFkk60MA59AC7p1Arp3EbjSC-D4OiT5WOr-RoKM92ytZxyFV0LWOk84czM81P2iARy7umjG_DNAaP2Dp5o8DfigcVmJZComIs4_3-Q9z8XTqFqCz-UOjWLq3nznVOZ1ORUze0XLo9LyiCckb1XBgtP7-vlzeZpoBc6_Q8PvRKKH_JuW_DCHzNBI8sNfbCETv1B12Vb5DKtIQiA"
                 />
               </a>
@@ -80,9 +80,13 @@
                 </button>
               </div>
             </div>
-            <h3 id="petNameView">Max</h3>
+            <a class="btn new-patient-link" href="agendar.html?paciente=nuevo">
+              <span class="material-symbols-outlined">event</span> Soy paciente nuevo
+            </a>
+            <h3 id="petNameView">Indique nombre de mascota</h3>
             <div class="chips">
               <span class="tag" id="petAgeView">3 años</span>
+              <span class="tag" id="petWeightView">Peso no indicado</span>
               <span class="tag" id="petTypeView">Perro</span>
               <span class="tag" id="petBreedView">Golden Retriever</span>
             </div>
@@ -103,7 +107,7 @@
               <div class="rec">
                 <span class="material-symbols-outlined">event_available</span>
                 <div>
-                  <b>Proxima cita</b><small>Control dental - 02 Sep 2026</small>
+                  <b>Proxima cita</b><small id="nextAppointmentView">Control dental - 02 Sep 2026</small>
                 </div>
                 <span class="status">Confirmada</span>
               </div>
@@ -159,8 +163,9 @@
               <p class="note-intro">Personaliza la información de tu mascota y guarda notas sobre síntomas o cuidados.</p>
               <form id="petProfileForm" class="pet-profile-form">
                 <div class="pet-fields">
-                  <label>Nombre<input id="profileName" type="text" maxlength="40" placeholder="Ej. Max"></label>
+                  <label>Nombre de mascota<input id="profileName" type="text" maxlength="40" placeholder="Indique nombre de mascota"></label>
                   <label>Edad<input id="profileAge" type="number" min="0" max="40" placeholder="Ej. 3"></label>
+                  <label>Peso (kg)<input id="profileWeight" type="number" min="0" max="200" step="0.1" placeholder="Ej. 12.5"></label>
                   <label>Tipo<input id="profileType" type="text" maxlength="30" placeholder="Ej. Perro"></label>
                   <label>Raza<input id="profileBreed" type="text" maxlength="50" placeholder="Ej. Golden Retriever"></label>
                 </div>
