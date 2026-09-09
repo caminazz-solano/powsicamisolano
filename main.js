@@ -44,6 +44,14 @@ const addPetBtn = document.getElementById("addPetBtn");
 const removePetBtn = document.getElementById("removePetBtn");
 const defaultPetImage = document.getElementById("petImage")?.getAttribute("src") || "";
 const requestedService = new URLSearchParams(window.location.search).get("servicio");
+const dateInput = document.getElementById("date");
+
+if (dateInput) {
+  const today = new Date();
+  const todayIso = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"), String(today.getDate()).padStart(2, "0")].join("-");
+  dateInput.min = todayIso;
+  if (!dateInput.value || dateInput.value < todayIso) dateInput.value = todayIso;
+}
 
 const defaultPet = {
   name: "",
