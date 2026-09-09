@@ -13,6 +13,9 @@
 * {
   box-sizing: border-box;
 }
+[hidden] {
+  display: none !important;
+}
 @keyframes pawFloat {
   from { margin-top: -34px; transform: rotate(-8deg); }
   to { margin-top: 46px; transform: rotate(8deg); }
