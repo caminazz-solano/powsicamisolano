@@ -140,7 +140,7 @@ function showPetProfile() {
         activePetIndex = Number(petInput.value);
         localStorage.setItem("woofyActivePet", activePetIndex);
         showPetProfile();
-      }, { once: true });
+      });
     } else if (!petInput.value) {
       petInput.value = pet.name || "";
     }
@@ -188,11 +188,13 @@ function updateWhatsappLink() {
 function syncNewPatientField() {
   const petInput = document.getElementById("pet");
   const newPatientField = document.getElementById("newPatientField");
+  const newPatientHelper = document.getElementById("newPatientHelper");
   const newPetName = document.getElementById("newPetName");
-  if (!petInput || !newPatientField || !newPetName) return;
+  if (!petInput || !newPatientField || !newPatientHelper || !newPetName) return;
 
   const isNewPatient = petInput.value === "new";
   newPatientField.hidden = !isNewPatient;
+  newPatientHelper.hidden = !isNewPatient;
   newPetName.required = isNewPatient;
   if (isNewPatient) newPetName.focus();
 }
